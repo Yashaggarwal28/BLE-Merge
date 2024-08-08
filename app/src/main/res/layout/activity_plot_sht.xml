@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Declare your ViewModel here if you have one -->
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.plot.PlotActivitySHT">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:contentDescription="Graphical Representation"
+            android:theme="?attr/actionBarTheme"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <TextView
+            android:id="@+id/detailsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Temperature Plot"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentEnd="true"
+            />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/tempChart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/detailsLabel"
+            android:layout_margin="16dp" />
+
+        <TextView
+            android:id="@+id/detailsLabelHumid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Humidity Plot"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_below="@+id/tempChart"
+            android:layout_alignParentEnd="true"
+            />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/humidChart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/detailsLabelHumid"
+            android:layout_margin="16dp" />
+
+
+
+    </RelativeLayout>
+</layout>

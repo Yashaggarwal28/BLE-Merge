@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="40dp"
+            android:background="@drawable/gradient_background">
+
+            <!-- Details Label TextView -->
+<!--            <TextView-->
+<!--                android:id="@+id/detailsLabel"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="@string/details"-->
+<!--                android:textSize="24sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!-- Grid Layout for Values -->
+
+            <TextView
+                android:id="@+id/Byte2Text"
+                android:layout_width="220dp"
+                android:layout_height="200dp"
+
+                android:layout_margin="5dp"
+                android:background="@drawable/stepcount_circle"
+                android:padding="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textFontWeight="20"
+                android:textSize="40sp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <GridLayout
+                android:id="@+id/detailsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:columnCount="2"
+                android:rowCount="5"
+                android:padding="10dp"
+
+                app:layout_constraintTop_toBottomOf="@id/Byte2Text">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_shape"
+                    android:padding="10dp"
+                    android:text="StepCount"
+                    android:textAlignment="center"
+                   android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+
+
+
+
+
+                <!-- Repeat similar Grid Items for other rows -->
+
+            </GridLayout>
+
+            <!-- Buttons -->
+            <Button
+                android:id="@+id/okButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_shape"
+                android:text="Back"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/detailsGrid"
+                app:layout_constraintEnd_toStartOf="@id/resetButton"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/resetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_shape"
+                android:text="Reset"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/detailsGrid"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/okButton" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
