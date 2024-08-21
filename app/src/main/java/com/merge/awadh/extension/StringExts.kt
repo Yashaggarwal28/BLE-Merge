@@ -19,7 +19,6 @@ fun String.hexToASCII(): String {
 }
 
 // Converts Hex String to ByteArray
-// Reference: https://stackoverflow.com/questions/66613717/kotlin-convert-hex-string-to-bytearray
 fun String.hexToByteArray(): ByteArray {
     return chunked(2)
         .map { it.toInt(16).toByte() }

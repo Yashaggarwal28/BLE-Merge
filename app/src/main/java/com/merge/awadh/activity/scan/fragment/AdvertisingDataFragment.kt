@@ -662,10 +662,6 @@ class AdvertisingDataFragment: DialogFragment(), ScanResultListener, DropdownSel
         val width = WindowManager.LayoutParams.MATCH_PARENT
         val height = WindowManager.LayoutParams.WRAP_CONTENT
         dialog?.window?.setLayout(width, height)
-//        if(dropdownitem == "StepCount"){
-//            dialog?.window?.setBackgroundDrawableResource(R.color.grey_background)
-//            dialog?.window?.setDimAmount(1.0f) // Adjust the dim amount as needed
-//        }
 
     }
 }

@@ -173,15 +173,7 @@ class PlotActivityAcc : AppCompatActivity(), ScanResultListener {
     }
 
     //add entry to each graph and has color for each graph
-//    private fun addEntryToChart(chart: LineChart, entries: ArrayList<Entry>, x: Float, y: Float, color: String) {
     private fun addEntryToChart(chart: LineChart, entries: ArrayList<Entry>, color: String) {
-
-//        entries.add(Entry(x, y))
-//
-//        // Check if the number of entries exceeds 30
-//        if (entries.size > 30) {
-//            entries.removeAt(0) // Remove the oldest entry
-//        }
 
         val dataSet = LineDataSet(entries, when (chart) {
             xChart -> "X"

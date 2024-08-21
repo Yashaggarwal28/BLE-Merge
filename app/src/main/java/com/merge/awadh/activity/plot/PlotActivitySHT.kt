@@ -164,11 +164,6 @@ import timber.log.Timber
 
         // Enable fill and set fill color
         dataSet.setDrawFilled(false)
-//        dataSet.fillColor = if (chart == tempChart) {
-//            resources.getColor(R.color.temp_fill, null)
-//        } else {
-//            resources.getColor(R.color.humid_fill, null)
-//        }
 
         if (isDarkMode) {
             chart.axisLeft.textColor = Color.WHITE
