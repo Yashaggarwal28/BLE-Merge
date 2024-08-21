@@ -36,11 +36,6 @@
         <activity android:name="com.merge.awadh.activity.plot.PlotActivitySHT"/>
         <activity android:name="com.merge.awadh.activity.plot.PlotActivityAcc"/>
         <!-- Service for BLE scanning -->
-        <service
-            android:name="com.merge.awadh.BLEScanService"
-            android:enabled="true"
-            android:exported="false" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.LimitLine
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -223,6 +224,15 @@ class PlotActivityAcc : AppCompatActivity(), ScanResultListener {
 
         val lineData = LineData(dataSet)
         chart.data = lineData
+        val limitLine = LimitLine(0f, "")
+        limitLine.lineWidth = 2f
+        limitLine.lineColor = Color.GRAY // Set line color
+//        limitLine.enableDashedLine(10f, 10f, 0f) // Optional dashed style
+
+        // Configure the Y-axis and add the limit line
+        val yAxis = chart.axisLeft
+        yAxis.addLimitLine(limitLine) // Add the limit line
+        yAxis.setDrawLimitLinesBehindData(true) // Ensure the limit line is behind the chart data
         chart.invalidate() // Refresh the chart
     }
 
