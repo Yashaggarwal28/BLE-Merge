@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="40dp"
+            android:background="@drawable/gradient_background">
+
+            <!-- Details Label TextView -->
+            <TextView
+                android:id="@+id/detailsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/details"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Grid Layout for Values -->
+            <GridLayout
+                android:id="@+id/detailsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:columnCount="2"
+                android:rowCount="5"
+                android:padding="10dp"
+                android:background="@drawable/grid_background"
+                app:layout_constraintTop_toBottomOf="@id/detailsLabel">
+
+                <!-- Grid Item 1 -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_shape"
+                    android:padding="10dp"
+                    android:text="Address"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Byte0Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_shape"
+                    android:padding="10dp"
+                    android:text="Device ID"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Byte1Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <!-- Additional Grid Items can be added here -->
+
+            </GridLayout>
+
+            <!-- Buttons -->
+
+            <Button
+                android:id="@+id/okButton"
+                android:layout_width="88dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="96dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/button_shape"
+                android:text="@string/ok"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Byte2Text" />
+
+            <Button
+                android:id="@+id/downloadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_shape"
+                android:text="Download Excel"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/okButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Byte2Text Position Correction -->
+            <TextView
+                android:id="@+id/Byte2Text"
+                android:layout_width="265dp"
+                android:layout_height="146dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/error_shape"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailsGrid" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

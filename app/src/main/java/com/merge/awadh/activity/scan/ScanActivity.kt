@@ -131,7 +131,7 @@ class ScanActivity : AppCompatActivity(), ScanAdapter.Delegate, ScanInterface, D
         }
     }
     private fun setupSpinner() {
-        val options = listOf("SHT40", "LIS3DH", "WindSpeed","StepCount", "Speed Distance")
+        val options = listOf("SHT40", "LIS3DH", "WindSpeed","StepCount", "Speed Distance", "error")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.byteSpinner.adapter = adapter
@@ -174,6 +174,9 @@ class ScanActivity : AppCompatActivity(), ScanAdapter.Delegate, ScanInterface, D
             }
             "Speed Distance" ->{
                 // Update the list for Accelerometer
+            }
+            "error" ->{
+
             }
         }
         notifyDropdownItemSelected(item)

@@ -25,6 +25,7 @@ import com.merge.awadh.ble.ScanResultListener
 import com.merge.awadh.databinding.FragmentAdvertismentDataWindspeedBinding
 import com.merge.awadh.databinding.FragmentAdvertisingDataAccBinding
 import com.merge.awadh.databinding.FragmentAdvertisingDataShtBinding
+import com.merge.awadh.databinding.FragmentAdvertisingDataErrorBinding
 import com.merge.awadh.databinding.FragmentAdvertisingDataStepcountBinding
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import com.merge.awadh.databinding.FragmentAdvertisingDataSdtBinding
@@ -120,6 +121,20 @@ class AdvertisingDataFragment: DialogFragment(), ScanResultListener, DropdownSel
                 }
                 (binding as FragmentAdvertisingDataShtBinding).root
             }
+            "error" ->{
+                binding = DataBindingUtil.inflate<FragmentAdvertisingDataErrorBinding>(
+                    inflater,
+                    R.layout.fragment_advertising_data_error,
+                    container,
+                    false
+                )
+                (binding as FragmentAdvertisingDataErrorBinding).apply {
+                    okButton.setOnClickListener {
+                        dismiss()
+                    }
+                }
+                (binding as FragmentAdvertisingDataErrorBinding).root
+            }
             "LIS3DH" -> {
                 binding = DataBindingUtil.inflate<FragmentAdvertisingDataAccBinding>(
                     inflater,
@@ -186,6 +201,7 @@ class AdvertisingDataFragment: DialogFragment(), ScanResultListener, DropdownSel
                 }
                 (binding as FragmentAdvertisingDataSdtBinding).root
             }
+
             else -> throw IllegalArgumentException("Unsupported dropdown item: $dropdownitem")
         }
     }
@@ -310,6 +326,9 @@ class AdvertisingDataFragment: DialogFragment(), ScanResultListener, DropdownSel
                 "WindSpeed" -> updateUISpeed(result, timeDifference)
                 "StepCount" -> updateUIStepCount(result, timeDifference)
                 "Speed Distance" -> updateSDT(result, timeDifference)
+                "error" -> updater(result)
+
+
             }
     }
     private fun updateSDT(result: ScanResult, timeDifference: Long){
@@ -561,6 +580,50 @@ class AdvertisingDataFragment: DialogFragment(), ScanResultListener, DropdownSel
                         Byte5Text.text = "$timeDifference ms"
                     }
                 }
+        }
+    }
+    private fun updater(result: ScanResult) {
+        if (result.device.address == deviceAddress) {
+            val bytes = result.scanRecord?.bytes ?: byteArrayOf()
+            val signedBytes = bytes.map { it.toInt() }
+
+            val deviceID = signedBytes.getOrNull(2)?.toUByte()?.toInt()
+
+            val err1= signedBytes.getOrNull(3)?.toUByte()?.toInt()
+            val err2= signedBytes.getOrNull(4)?.toUByte()?.toInt()
+            val err3= signedBytes.getOrNull(5)?.toUByte()?.toInt()
+            val err4= signedBytes.getOrNull(6)?.toUByte()?.toInt()
+            val err5= signedBytes.getOrNull(7)?.toUByte()?.toInt()
+
+            var about_error = ""
+
+            if (err1 != 0){
+                about_error += "Network error occurred\n"
+            }
+            if (err2 != 0){
+                about_error += "Battery error occurred\n"
+            }
+            if (err3 != 0){
+                about_error += "wind sensor error occurred\n"
+            }
+            if (err4 != 0){
+                about_error += "lux sensor error occurred\n"
+            }
+            if (err5 != 0){
+                about_error += "temperature and humidity error occurred"
+            }
+            if (err1 == 0 && err2 == 0 && err3 == 0 && err4 == 0 && err5 == 0){
+                about_error = "No error occurred"
+            }
+
+            requireActivity().runOnUiThread {
+                (binding as FragmentAdvertisingDataErrorBinding).apply {
+                    Byte0Text.text = deviceAddress
+                    Byte1Text.text = deviceID?.toString() ?: ""
+                    Byte2Text.text = about_error
+
+                }
+            }
         }
     }
 
